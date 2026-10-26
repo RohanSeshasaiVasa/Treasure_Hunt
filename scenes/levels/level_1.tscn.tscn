@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://fwv55204oeol"]
+
+[sub_resource type="Environment" id="Environment_bde3n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bde3n"]
+
+[node name="Level1_tscn" type="Node3D" unique_id=1936910119]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1578414663]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1445741442]
+environment = SubResource("Environment_bde3n")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1613136091]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 8, 12)
+
+[node name="Ground" type="MeshInstance3D" parent="." unique_id=1922365300]
+transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 19.92467, 10.704951, -2.9988961)
+mesh = SubResource("PlaneMesh_bde3n")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1892894527]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2097266833]
+offset_right = 40.0
+offset_bottom = 23.0

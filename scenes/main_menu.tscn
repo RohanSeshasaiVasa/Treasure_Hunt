@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dfxceugadyri0"]
+
+[ext_resource type="Script" uid="uid://bfda53w58x00g" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+
+[node name="MainMenu" type="Control" unique_id=774634662]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 309.0
+offset_top = 73.0
+offset_right = 309.0
+offset_bottom = 73.0
+script = ExtResource("1_l6cm7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1448403824]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -29.5
+offset_right = 55.0
+offset_bottom = 29.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -6.2831855
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=227323071]
+layout_mode = 2
+text = "Treasure hunt"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=980787369]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Play"
+
+[node name="AboutButton" type="Button" parent="VBoxContainer" unique_id=904830406]
+unique_name_in_owner = true
+layout_mode = 2
+text = "About"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=769707158]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="AboutPanel" type="Panel" parent="." unique_id=2009525145]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 154.0
+offset_top = 29.0
+offset_right = 194.0
+offset_bottom = 69.0
+
+[node name="AboutLabel" type="Label" parent="AboutPanel" unique_id=1998641032]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CloseButton" type="Button" parent="AboutPanel" unique_id=1595245679]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
