@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://djx05wskpxmwp"]
 
 [ext_resource type="Script" uid="uid://oik1tkh2pkrd" path="res://scripts/player.gd" id="1_p0vlq"]
+[ext_resource type="Script" uid="uid://cqx8v4rl1qfau" path="res://scripts/inventory_bar.gd" id="2_v6fml"]
+[ext_resource type="Script" uid="uid://dopjio8kg8t55" path="res://scripts/inventory.gd" id="3_3li8b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bde3n"]
 radius = 0.4
@@ -20,3 +22,99 @@ shape = SubResource("CapsuleShape3D_bde3n")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=895606854]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 mesh = SubResource("CapsuleMesh_bde3n")
+
+[node name="Head" type="Node3D" parent="." unique_id=1660046606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=766919881]
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=764669807]
+target_position = Vector3(0, 0, -3)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1003806638]
+
+[node name="CenterContainer" type="CenterContainer" parent="HUD" unique_id=1575210014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Label" parent="HUD/CenterContainer" unique_id=519309603]
+layout_mode = 2
+text = "+"
+
+[node name="InventoryBar" type="HBoxContainer" parent="HUD" unique_id=1887948045]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -100.0
+offset_right = 266.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 8
+script = ExtResource("2_v6fml")
+
+[node name="Slot1" type="PanelContainer" parent="HUD/InventoryBar" unique_id=1377859965]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="HUD/InventoryBar/Slot1" unique_id=710907969]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slot2" type="PanelContainer" parent="HUD/InventoryBar" unique_id=56594070]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="HUD/InventoryBar/Slot2" unique_id=494271852]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slot3" type="PanelContainer" parent="HUD/InventoryBar" unique_id=1917421474]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="HUD/InventoryBar/Slot3" unique_id=875328644]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slot4" type="PanelContainer" parent="HUD/InventoryBar" unique_id=384106313]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="HUD/InventoryBar/Slot4" unique_id=971887602]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Slot5" type="PanelContainer" parent="HUD/InventoryBar" unique_id=1057209786]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NameLabel" type="Label" parent="HUD/InventoryBar/Slot5" unique_id=1840879665]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Inventory" type="Node" parent="." unique_id=1167080427]
+unique_name_in_owner = true
+script = ExtResource("3_3li8b")

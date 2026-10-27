@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AntiqueData" format=3 uid="uid://dtpuckii8uwye"]
+
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="1_ijdkq"]
+
+[resource]
+script = ExtResource("1_ijdkq")
+display_name = "Gold Coin"
+min_value = 30000
+max_value = 45000
+rarity_weight = 2
+metadata/_custom_type_script = "uid://d3ojfwxtr5d6r"

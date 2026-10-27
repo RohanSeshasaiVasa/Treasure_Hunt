@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AntiqueData" format=3 uid="uid://dqoo23vrj8r3p"]
+
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="1_y47am"]
+
+[resource]
+script = ExtResource("1_y47am")
+display_name = "Terracotta Shard"
+rarity_weight = 35
+metadata/_custom_type_script = "uid://d3ojfwxtr5d6r"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AntiqueData" format=3 uid="uid://6ucmakixbk81"]
+
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="1_pw3de"]
+
+[resource]
+script = ExtResource("1_pw3de")
+display_name = "Mughal Silver Rupee"
+min_value = 4000
+max_value = 7000
+rarity_weight = 18
+metadata/_custom_type_script = "uid://d3ojfwxtr5d6r"

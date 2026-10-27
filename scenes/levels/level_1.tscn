@@ -1,23 +1,32 @@
 [gd_scene format=3 uid="uid://6tt4bch6u2xd"]
 
+[ext_resource type="Script" uid="uid://cnob8kdr6fxss" path="res://scripts/level_1.gd" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://djx05wskpxmwp" path="res://scenes/Player.tscn" id="1_ksju7"]
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="2_dga24"]
+[ext_resource type="Resource" uid="uid://dmc6t56c3hg76" path="res://data/antiques/brass_diya.tres" id="3_qxy0u"]
+[ext_resource type="Resource" uid="uid://bm4fthhn3pdgu" path="res://data/antiques/bronze_idol.tres" id="4_excbq"]
+[ext_resource type="Resource" uid="uid://d2fri832ehgnr" path="res://data/antiques/copper_coin.tres" id="5_iav0o"]
+[ext_resource type="Resource" uid="uid://dtpuckii8uwye" path="res://data/antiques/gold_coin.tres" id="6_dnkej"]
+[ext_resource type="Resource" uid="uid://6ucmakixbk81" path="res://data/antiques/silver_rupee.tres" id="7_mm8aj"]
+[ext_resource type="Resource" uid="uid://dqoo23vrj8r3p" path="res://data/antiques/terracotta_shard.tres" id="8_wtwp4"]
 
 [sub_resource type="Environment" id="Environment_bde3n"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bde3n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bde3n"]
-size = Vector3(114.302185, 1, 117.657776)
+size = Vector3(119.53403, 1, 121.36307)
 
 [node name="Level1_tscn" type="Node3D" unique_id=1936910119]
+script = ExtResource("1_6iamk")
+antique_pool = Array[ExtResource("2_dga24")]([ExtResource("3_qxy0u"), ExtResource("4_excbq"), ExtResource("5_iav0o"), ExtResource("6_dnkej"), ExtResource("7_mm8aj"), ExtResource("8_wtwp4")])
+dig_radius = 10.0
+show_buried = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1578414663]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1445741442]
 environment = SubResource("Environment_bde3n")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1613136091]
-transform = Transform3D(1, 0, 0, 0, 0.5764323, 0.81714493, 0, -0.81714493, 0.5764323, 0, 15.88279, 12)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1892894527]
 
@@ -25,15 +34,35 @@ transform = Transform3D(1, 0, 0, 0, 0.5764323, 0.81714493, 0, -0.81714493, 0.576
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Ground" type="StaticBody3D" parent="." unique_id=2029659572]
+[node name="MessageLabel" type="Label" parent="CanvasLayer" unique_id=1047632776]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -39.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 1
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=2029659572 groups=["diggable"]]
 
 [node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=1922365300]
 transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 19.92467, 10.704951, -2.9988961)
 mesh = SubResource("PlaneMesh_bde3n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=683506559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.30191, 11.908493, -1.2135315)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.917831, 11.908493, -3.0661774)
 shape = SubResource("BoxShape3D_bde3n")
 
 [node name="Player" parent="." unique_id=2007975670 instance=ExtResource("1_ksju7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.488747, 11.293734)
+
+[node name="BuriedAntiques" type="Node3D" parent="." unique_id=1127632319]
+
+[node name="MessageTimer" type="Timer" parent="." unique_id=697912213]
+wait_time = 1.5
+one_shot = true

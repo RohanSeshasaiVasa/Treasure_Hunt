@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ow4155ve0ypr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_giyli"]
+albedo_color = Color(0.39607844, 0.2627451, 0.12941177, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bde3n"]
+material = SubResource("StandardMaterial3D_giyli")
+height = 0.02
+
+[node name="Hole" type="MeshInstance3D" unique_id=1072943140]
+mesh = SubResource("CylinderMesh_bde3n")

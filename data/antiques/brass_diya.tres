@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AntiqueData" format=3 uid="uid://dmc6t56c3hg76"]
+
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="1_5rm8e"]
+
+[resource]
+script = ExtResource("1_5rm8e")
+display_name = "Brass Diya"
+min_value = 6000
+max_value = 10000
+metadata/_custom_type_script = "uid://d3ojfwxtr5d6r"

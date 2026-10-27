@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AntiqueData" format=3 uid="uid://bm4fthhn3pdgu"]
+
+[ext_resource type="Script" uid="uid://d3ojfwxtr5d6r" path="res://scripts/antique_data.gd" id="1_ub4ex"]
+
+[resource]
+script = ExtResource("1_ub4ex")
+display_name = "Bronze Idol"
+min_value = 15000
+max_value = 25000
+rarity_weight = 5
+metadata/_custom_type_script = "uid://d3ojfwxtr5d6r"
