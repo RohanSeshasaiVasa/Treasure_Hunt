@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://dtpuckii8uwye" path="res://data/antiques/gold_coin.tres" id="6_dnkej"]
 [ext_resource type="Resource" uid="uid://6ucmakixbk81" path="res://data/antiques/silver_rupee.tres" id="7_mm8aj"]
 [ext_resource type="Resource" uid="uid://dqoo23vrj8r3p" path="res://data/antiques/terracotta_shard.tres" id="8_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://dfs71kcr01326" path="res://scenes/Shopkeeper.tscn" id="10_qxy0u"]
 
 [sub_resource type="Environment" id="Environment_bde3n"]
 
@@ -30,23 +31,73 @@ environment = SubResource("Environment_bde3n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1892894527]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=2097266833]
+[node name="TimerLabel" type="Label" parent="CanvasLayer" unique_id=2097266833]
+unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_font_sizes/font_size = 28
 
 [node name="MessageLabel" type="Label" parent="CanvasLayer" unique_id=1047632776]
-anchors_preset = 7
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 1.0
 offset_left = -20.0
-offset_top = -39.0
 offset_right = 20.0
+offset_bottom = 39.0
 grow_horizontal = 2
-grow_vertical = 0
 theme_override_font_sizes/font_size = 28
 horizontal_alignment = 1
+
+[node name="TotalLabel" type="Label" parent="CanvasLayer" unique_id=768370459]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_bottom = 39.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 28
+horizontal_alignment = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="CanvasLayer" unique_id=1913271931]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(400, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ResultPanel" unique_id=517396948]
+layout_mode = 2
+
+[node name="ResultTitle" type="Label" parent="CanvasLayer/ResultPanel/VBoxContainer" unique_id=1192336212]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+horizontal_alignment = 1
+
+[node name="ResultDetailes" type="Label" parent="CanvasLayer/ResultPanel/VBoxContainer" unique_id=277886689]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/ResultPanel/VBoxContainer" unique_id=41892451]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Retry"
+
+[node name="LevelSelectButton" type="Button" parent="CanvasLayer/ResultPanel/VBoxContainer" unique_id=721681251]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Level Select"
 
 [node name="Ground" type="StaticBody3D" parent="." unique_id=2029659572 groups=["diggable"]]
 
@@ -55,14 +106,20 @@ transform = Transform3D(60, 0, 0, 0, 60, 0, 0, 0, 60, 19.92467, 10.704951, -2.99
 mesh = SubResource("PlaneMesh_bde3n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=683506559]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.917831, 11.908493, -3.0661774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.917831, 10.889198, -3.0661774)
 shape = SubResource("BoxShape3D_bde3n")
 
 [node name="Player" parent="." unique_id=2007975670 instance=ExtResource("1_ksju7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.488747, 11.293734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.841522, 11.293734)
 
 [node name="BuriedAntiques" type="Node3D" parent="." unique_id=1127632319]
 
 [node name="MessageTimer" type="Timer" parent="." unique_id=697912213]
 wait_time = 1.5
 one_shot = true
+
+[node name="Shopkeeper" parent="." unique_id=1671598775 instance=ExtResource("10_qxy0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 79.06024, 11.3999405, 0)
+
+[node name="LevelTimer" type="Timer" parent="." unique_id=1363384872]
+unique_name_in_owner = true

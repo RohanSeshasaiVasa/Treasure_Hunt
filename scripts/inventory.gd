@@ -19,7 +19,7 @@ func is_full() -> bool:
 func add_item(item: AntiqueData) -> bool:
 	for slot in slots:
 		if slot["antique"] == item and slot["count"] < MAX_STACK:
-			slot["change"] += 1
+			slot["count"] += 1
 			changed.emit()
 			return true
 			
@@ -29,3 +29,9 @@ func add_item(item: AntiqueData) -> bool:
 	slots.append({"antique": item, "count": 1})
 	changed.emit()
 	return true
+
+func take_all() -> Array[Dictionary]:
+	var taken: Array[Dictionary] = slots
+	slots = []
+	changed.emit()
+	return taken

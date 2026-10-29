@@ -7,5 +7,5 @@ extends Resource
 @export var max_value: int = 2000
 @export_range(1, 100) var rarity_weight: int = 10
 
-func roll_value() -> void:
+func roll_value() -> int:
 	return snappedi(randi_range(min_value, max_value), 100)
