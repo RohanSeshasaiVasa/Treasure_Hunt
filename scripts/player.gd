@@ -4,7 +4,7 @@ extends CharacterBody3D
 signal dug(dig_position: Vector3)
 signal bag_full
 
-@export var speed: float = 25.0
+@export var speed: float = 10.0
 @export var mouse_sensitivity: float = 0.003
 @export var dig_time: float = 1.0
 

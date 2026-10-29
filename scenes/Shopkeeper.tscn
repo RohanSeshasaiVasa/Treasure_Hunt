@@ -1,16 +1,9 @@
 [gd_scene format=3 uid="uid://dfs71kcr01326"]
 
 [ext_resource type="Script" uid="uid://cofkau3j0sebh" path="res://scripts/shopkeeper.gd" id="1_xikej"]
+[ext_resource type="PackedScene" uid="uid://dnku6hgk4umi5" path="res://assests/Character/characterMedium.fbx" id="2_ey2od"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bde3n"]
-radius = 0.4
-height = 1.8
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bx2ta"]
-albedo_color = Color(1, 0.49411765, 0.08627451, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bde3n"]
-material = SubResource("StandardMaterial3D_bx2ta")
 radius = 0.4
 height = 1.8
 
@@ -25,10 +18,6 @@ script = ExtResource("1_xikej")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_bde3n")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=656348221]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-mesh = SubResource("CapsuleMesh_bde3n")
-
 [node name="Prompt" type="Label3D" parent="." unique_id=1086033076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3, 0)
 billboard = 1
@@ -40,3 +29,6 @@ font_size = 48
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TalkZone" unique_id=720302587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_giyli")
+
+[node name="characterMedium" parent="." unique_id=470065749 instance=ExtResource("2_ey2od")]
+transform = Transform3D(0.5503942, 0, 0, 0, 0.45044643, 0, 0, 0, 0.37305963, 0, 0, 0)

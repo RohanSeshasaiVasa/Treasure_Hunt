@@ -12,6 +12,9 @@ const HOLE_SCENE := preload("res://scenes/hole.tscn")
 @export var spawn_half_size: float = 25.0
 @export var dig_radius: float = 1.0
 @export var show_buried: bool = false
+@export_group("Island")
+@export var shore_radius: float = 32.0
+@export var wall_segments: int = 48
 
 var total_earned: int = 0
 
@@ -26,6 +29,7 @@ var total_earned: int = 0
 @onready var result_panel: PanelContainer = %ResultPanel
 @onready var result_title: Label = %ResultTitle
 @onready var result_details: Label = %ResultDetailes
+@onready var boundaries: StaticBody3D = $Boundaries
 
 func _ready() -> void:
 	player.dug.connect(_on_player_dug)
@@ -39,6 +43,7 @@ func _ready() -> void:
 	message_label.hide()
 	result_panel.hide()
 	update_total_label()
+	build_walls()
 	bury_antiques()
 	level_timer.start(time_limit)
 
@@ -62,11 +67,10 @@ func bury_antiques() -> void:
 	for i in antique_count:
 		var spot := Marker3D.new()
 		buried_antiques.add_child(spot)
-		spot.position = Vector3(
-			randf_range(-spawn_half_size, spawn_half_size),
-			0,
-			randf_range(-spawn_half_size, spawn_half_size)
-		)
+		var point := random_island_point()
+		while is_near_tree(point):
+			point = random_island_point()
+		spot.position = point
 		spot.set_meta("antique", pick_random_antique())
 		if show_buried:
 			var debug_mesh := MeshInstance3D.new()
@@ -180,3 +184,28 @@ func show_message(text: String, duration: float = 1.5) -> void:
 	message_label.text = text
 	message_label.show()
 	message_timer.start(duration)
+
+
+func build_walls() -> void:
+	var segment_width := TAU * shore_radius /wall_segments *1.2
+	for i in wall_segments:
+		var angle := TAU*i/wall_segments
+		var box := BoxShape3D.new()
+		box.size = Vector3(segment_width, 10.0, 1.0)
+		var segment := CollisionShape3D.new()
+		segment.shape = box
+		segment.position = Vector3(sin(angle), 0, cos(angle)) * (shore_radius + 0.5) + Vector3.UP* 5.0
+		segment.rotation.y = angle
+		boundaries.add_child(segment)
+
+func random_island_point() -> Vector3:
+	var angle := randf() *TAU
+	var distance := sqrt(randf()) * (shore_radius -1.0)
+	return Vector3(sin(angle) * distance, 0, cos(angle) *distance)
+	
+func is_near_tree(point: Vector3) -> bool:
+	for tree_node in get_tree().get_nodes_in_group("trees"):
+		var tree_spot := Vector3(tree_node.global_position.x, 0, tree_node.global_position.z)
+		if tree_spot.distance_to(point)< 1.5:
+			return true
+	return false

@@ -13,6 +13,14 @@ func _ready() -> void:
 	talk_zone.body_entered.connect(_on_body_entered)
 	talk_zone.body_exited.connect(_on_body_exited)
 	
+	var anim := find_child("AnimationPlayer", true, false) as AnimationPlayer
+	if anim:
+		for anim_name in anim.get_animation_list():
+			if "idle" in String(anim_name).to_lower():
+				anim.get_animation(anim_name).loop_mode = Animation.LOOP_LINEAR
+				anim.play(anim_name)
+				break
+	
 func _on_body_entered(body: Node3D) -> void:
 	if body is Player:
 		nearby_player = body as Player 

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c275h22bq87p4"]
+
+[ext_resource type="PackedScene" uid="uid://cnayabmkdmkqm" path="res://assests/textures/kenney_nature-kit/Models/GLTF format/tree_oak.glb" id="1_n1lvg"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_bde3n"]
+height = 1.1280212
+radius = 0.17871094
+
+[node name="Tree" type="StaticBody3D" unique_id=1332844739 groups=["trees"]]
+
+[node name="tree_oak2" parent="." unique_id=798962695 instance=ExtResource("1_n1lvg")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=936012256]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010046244, 0.5306643, -0.022115767)
+shape = SubResource("CylinderShape3D_bde3n")
