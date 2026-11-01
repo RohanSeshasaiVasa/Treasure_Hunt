@@ -1,9 +1,11 @@
 extends Control
 
 func _ready() -> void:
-	%Level1Button.pressed.connect(_load_level.bind(1))
-	%Level2Button.pressed.connect(_load_level.bind(2))
-	%Level3Button.pressed.connect(_load_level.bind(3))
+	var level_number := 1
+	for button in %LevelButtons.get_children():
+		button.pressed.connect(_load_level.bind(level_number))
+		button.disabled = not Progress.is_unlocked(level_number)
+		level_number += 1
 	%BackButton.pressed.connect(_on_back_pressed)
 	
 func _load_level(level_number: int) -> void:

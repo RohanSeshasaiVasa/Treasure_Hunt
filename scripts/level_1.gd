@@ -39,6 +39,7 @@ func _ready() -> void:
 	level_timer.timeout.connect(_on_time_up)
 	%RetryButton.pressed.connect(_on_retry_pressed)
 	%LevelSelectButton.pressed.connect(_on_level_select_pressed)
+	%NextLevelButton.pressed.connect(_on_next_level_pressed)
 	
 	message_label.hide()
 	result_panel.hide()
@@ -148,12 +149,15 @@ func _on_time_up() -> void:
 func end_level(won: bool) -> void:
 	get_tree().paused = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	%NextLevelButton.hide()
 	if won:
-		result_title.text = "Level %d Complete !! hurray !!" % level_number
-		result_details.text = "You earned %s with %s left on the clock. Damn bro!" % [format_rupees(total_earned), timer_label.text]
+		Progress.complete_level(level_number)
+		result_title.text = "Level %d completed !!" % level_number
+		result_details.text = "You earned %s with %s left on the clock" % [format_rupees(total_earned), timer_label.text]
+		%NextLevelButton.visible = ResourceLoader.exists(level_path(level_number +1))
 	else:
-		result_title.text = "Time's Up !"
-		result_details.text = "You earned %s of %s. L brehh." % [format_rupees(total_earned), format_rupees(target_value)]
+		result_title.text = "Time's up bro !!"
+		result_details.text = "You earned %s of %s. (Disappointment)" % [format_rupees(total_earned), format_rupees(target_value)]
 	result_panel.show()
 	
 func _on_retry_pressed() -> void:
@@ -209,3 +213,10 @@ func is_near_tree(point: Vector3) -> bool:
 		if tree_spot.distance_to(point)< 1.5:
 			return true
 	return false
+	
+func level_path(number: int) -> String:
+	return "res://scenes/levels/level_%d.tscn" % number
+	
+func _on_next_level_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(level_path(level_number + 1))

@@ -139,6 +139,11 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Level Select"
 
+[node name="NextLevelButton" type="Button" parent="CanvasLayer/ResultPanel/VBoxContainer" unique_id=927995954]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NextLevel"
+
 [node name="Ground" type="StaticBody3D" parent="." unique_id=2029659572 groups=["diggable"]]
 
 [node name="GroundMesh" type="MeshInstance3D" parent="Ground" unique_id=1922365300]
@@ -244,9 +249,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.67554, 8.036088, -15.89869
 [node name="Tree2" parent="Jungle" unique_id=1577144138 instance=ExtResource("20_mkypq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.7002544, 8.000778, 8.921256)
 
-[node name="Tree4" parent="Jungle" unique_id=499457049 instance=ExtResource("20_mkypq")]
-transform = Transform3D(1.9340978, 0, 0, 0, 1.4616365, 0, 0, 0, 2.181976, 18.581501, 8.000778, 7.351759)
-
 [node name="Tree5" parent="Jungle" unique_id=1924909028 instance=ExtResource("19_gmpev")]
 transform = Transform3D(0.67098063, 0, 0.74147487, 0, 1, 0, -0.74147487, 0, 0.67098063, 11.75388, 8.036088, 4.6726356)
 
@@ -255,9 +257,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.859999, 8.036088, 3.148717
 
 [node name="Tree7" parent="Jungle" unique_id=720209670 instance=ExtResource("20_mkypq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.19769, 8.000778, 14.005327)
-
-[node name="Tree8" parent="Jungle" unique_id=1229400793 instance=ExtResource("20_mkypq")]
-transform = Transform3D(3.6728427, 0, 0, 0, 2.788192, 0, 0, 0, 3.4205208, 16.550377, 8.000778, -6.6695166)
 
 [node name="Sea" type="MeshInstance3D" parent="." unique_id=1307432344]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4326172, 0)

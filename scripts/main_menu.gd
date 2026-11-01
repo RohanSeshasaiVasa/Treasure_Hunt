@@ -15,7 +15,7 @@ func _on_about_pressed() -> void:
 	%AboutPanel.show()
 	
 func _on_close_pressed() -> void:
-	%ABoutPanel.hide()
+	%AboutPanel.hide()
 	
 func _on_quit_pressed() -> void:
 	get_tree().quit()

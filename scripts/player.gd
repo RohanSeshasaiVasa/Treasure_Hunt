@@ -4,7 +4,7 @@ extends CharacterBody3D
 signal dug(dig_position: Vector3)
 signal bag_full
 
-@export var speed: float = 10.0
+@export var speed: float = 5.0
 @export var mouse_sensitivity: float = 0.003
 @export var dig_time: float = 1.0
 
@@ -14,6 +14,7 @@ var is_digging: bool = false
 @onready var head: Node3D = $Head
 @onready var ray: RayCast3D = $Head/Camera3D/RayCast3D
 @onready var inventory: Inventory = $Inventory
+@onready var shovel_animator: AnimationPlayer = $ShovelAnimator
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -40,6 +41,7 @@ func try_dig() -> void:
 		
 	var dig_position := ray.get_collision_point()
 	is_digging = true
+	shovel_animator.play("dig")
 	await get_tree().create_timer(dig_time).timeout
 	is_digging = false
 	dug.emit(dig_position)
@@ -62,3 +64,5 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 		
 	move_and_slide()
+	
+	
