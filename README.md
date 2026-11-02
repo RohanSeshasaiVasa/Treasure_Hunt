@@ -10,6 +10,7 @@ To play this game:
 1. Use WASD to move
 2. Look down and left click to dig
 3. Go to the white person to sell antiques
+4. You get only 5 mins, so make it quick.
    
 Hint: Use "E" to sell the antiques when near the antique appraiser(white person)
 
