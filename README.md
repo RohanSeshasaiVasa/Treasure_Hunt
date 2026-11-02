@@ -3,6 +3,7 @@
 <p>Treasure hunt is a game in which you find antiques by digging using a shovel and sell it the antique appraiser. You will get money by selling your antiques and go to next level. (Max 4 levels).</p>
 
 <p>I made this because when this idea came into my mind, I really thought this would be the one that I can do and always want to do it.</p>
+<p>Made this game using Godot, it is a 3D game. I researched the docs and made the game.</p>
 
 To play this game:
 
